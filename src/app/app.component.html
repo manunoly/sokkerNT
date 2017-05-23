@@ -1,0 +1,41 @@
+<div class="container">
+  <h1>{{title}}</h1>
+  <div class="header-bar"></div>
+
+  <nav class="nav nav--red">
+    <ul class="nav__list">
+      <li class="nav__list__item"><a routerLink="/" routerLinkActive="active">Home</a></li>
+      <li class="nav__list__item"><a routerLink="/players/add">Player</a></li>
+      <li class="nav__list__item"><a routerLink="/players/list-players">NT Team</a></li>
+      <li class="nav__list__item"><a routerLink="/players/import-players">Import</a></li>
+      <li class="nav__list__item"><a routerLink="/players/PID">PID</a></li>
+      <li class="nav__list__item nav_aling_rigth mobile">
+        <div *ngIf="(user | async);then userData else loginS"></div>
+        <ng-template #loginS>
+          <button type="button" (click)="loginGoogle()" class="btn btn-link btn-xs"><img src="./assets/img/google.png" style="width: 25px; height: 25px;" title="Google Sigin" alt="Google Sigin"></button>
+          <button type="button" routerLink="/login" class="btn btn-link btn-xs"><img src="./assets/img/email.png" style="width: 25px; height: 25px;"  title="Email Sigin" alt="Email Sigin"></button>
+        </ng-template>
+        <ng-template #userData>
+          <span class="nav__list__item" style="border: none"> {{ name }}</span>
+          <button type="button" (click)="logout()" class="pull-right btn btn-link btn-xs">Logout</button>
+        </ng-template>
+      </li>
+    </ul>
+  </nav>
+
+  <br>
+  <router-outlet></router-outlet>
+</div>
+
+<!--<div class="row columns">
+  
+  <button type="button" class="btn btn-default" (click) = "login1()">button</button>
+  
+  <button (click)="login()" *ngIf="!(user | async)?.uid">Anonymous Login</button>
+  <button (click)="logout()" *ngIf="(user | async)?.uid">Logout</button>
+
+  <input type="text" id="message" *ngIf="(user | async)?.uid" placeholder="What is it that you do?" (keyup.enter)="Send($event.target.value)" [(ngModel)]="msgVal" />
+  <div id="details-container">
+      <p *ngFor="let item of items | async">{{item.message}}</p>
+  </div>
+</div>-->

@@ -1,19 +1,50 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Players List</h3>
-  </div>
-  <div class="panel-body">
-    <ul style="list-style-type: none; padding: 0;">
-      <!--<li class="col-md-6" *ngFor="let item of players">-->
-      <li class="col-md-6" style="padding: 0 0 20px 0;" *ngFor="let item of players">
-        <app-show-player *ngFor="let playerEl of playersList | async">asd</app-show-player>
-      </li>
-    </ul>
-  </div>
-</div>
+<button type="button" (click)="addStaff()" class="btn btn-default">button</button>
 
-  <ul>
-    <li *ngFor="let item of playersList | async">
-      {{ item | json }}
-    </li>
-  </ul>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Players List</h3>
+    </div>
+    <div class="panel-body">
+      <ul style="list-style-type: none; padding: 0;">
+        <!--<li class="col-md-6" *ngFor="let player of players">-->
+        <li *ngFor="let player of playersList | async" class="col-md-6" style="padding: 0 0 20px 0;">
+
+          <h4 class=""><a href="#">{{player.name}}</a></h4>
+
+          <div class="">
+            <div class="">
+              value: {{ player.value }}, wage: {{ player.wage }} <br>
+              <strong> {{ player.form }} </strong> <span class="text-muted">[{{ player.form }}]</span> form <br> height: {{ player.height }}
+              cm, weight: {{ player.weight }} kg,<br>
+              <span>BMI: {{ player.bmi }} </span> <br> {{ player.experience }} experience -- {{ player.workTeam }} team-work
+              <br><br>
+            </div>
+
+            <div class="" *ngIf="isAuthenticated()">
+              <table class="table-condensed small">
+                <tbody>
+                  <tr>
+                    <td style="width: 50%;"><strong class="">formidable {{player.stamina}} </strong><span class="text-muted">[{{player.stamina}}]</span> stamina</td>
+                    <td style="width: 50%;"><strong class="">formidable {{player.keeper}} </strong><span class="text-muted">[{{player.keeper}}]</span> keeper</td>
+                  </tr>
+                  <tr>
+                    <td><strong class="">formidable {{player.pace}} </strong><span class="text-muted">[{{player.pace}}]</span> pace</td>
+                    <td><strong class="">formidable {{player.defender}} </strong><span class="text-muted">[{{player.defender}}]</span> defender</td>
+                  </tr>
+                  <tr>
+                    <td><strong class="">formidable {{player.technique}} </strong><span class="text-muted">[{{player.technique}}]</span> technique</td>
+                    <td><strong class="">formidable {{player.playmaker}} </strong><span class="text-muted">[{{player.playmaker}}]</span> playmaker</td>
+                  </tr>
+                  <tr>
+                    <td><strong class="">formidable {{player.passing}} </strong><span class="text-muted">[{{player.passing}}]</span> passing</td>
+                    <td><strong class="">formidable {{player.striker}} </strong><span class="text-muted">[{{player.striker}}]</span> striker</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>

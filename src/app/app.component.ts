@@ -18,17 +18,17 @@ export class AppComponent implements OnInit {
 
   constructor(private auth: AuthService) {
     this.user = this.auth.getUser();
+
+  }
+  ngOnInit() {
     this.user.subscribe(
-      (data: Object) => {
-        if (data != null)
-          this.name = data['displayName'];
+      (user: Object) => {
+        if (user != null)
+          this.name = user['displayName'];
       },
       (error: JSON) => { console.log(error); },
       () => { console.log('completed'); }
     );
-  }
-  ngOnInit() {
-
   }
   loginGoogle() {
     this.auth.loginGoogle();
@@ -37,4 +37,5 @@ export class AppComponent implements OnInit {
   logout() {
     this.auth.logout()
   }
+
 }

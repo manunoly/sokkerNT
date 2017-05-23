@@ -19,6 +19,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { PlayerService } from './players/player.service';
 import { AuthService } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
+
 
 import { PlayersComponent } from './players/players.component';
 import { AddPlayerComponent } from './players/add-player/add-player.component';
@@ -67,7 +69,7 @@ export const firebaseConfig = {
     MdInputModule,
     BrowserAnimationsModule
   ],
-  providers: [AuthService, PlayerService],
+  providers: [AuthService, PlayerService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AuthGuard } from './auth-guard.service';
+
 import { HomeComponent } from './home/home.component'
 import { PlayersComponent } from './players/players.component';
 import { ListPlayersComponent } from './players/list-players/list-players.component';
@@ -10,14 +12,14 @@ import { ImportPlayersComponent } from './players/import-players/import-players.
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './login/sign-up/sign-up.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
-
+ 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   {
     path: 'players', component: PlayersComponent,
     children: [
-      { path: 'list-players', component: ListPlayersComponent },
+      { path: 'list-players', component: ListPlayersComponent/*, canActivate: [AuthGuard]*/ },
       { path: '*', redirectTo: 'list-players' },
       { path: 'add', component: AddPlayerComponent/*, loadChildren: () => AddPlayerComponent*/ },
       { path: 'import-players', component: ImportPlayersComponent },

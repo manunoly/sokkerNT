@@ -11,11 +11,13 @@ import { ShowPlayerComponent } from './players/show-player/show-player.component
 import { ImportPlayersComponent } from './players/import-players/import-players.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './login/sign-up/sign-up.component';
+import { StaffComponent } from './staff/staff.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
  
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  { path: 'staff', component: StaffComponent },
   {
     path: 'players', component: PlayersComponent,
     children: [
@@ -29,12 +31,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'login', component: LoginComponent,
-    children: [
-      { path: '', component: LoginComponent, pathMatch: 'full' },
-      { path: 'sign-in', component: LoginComponent },
-    ]
-  },
+    path: 'login', component: LoginComponent },
   { path: 'page-not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: 'page-not-found' }
 ];

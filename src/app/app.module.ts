@@ -20,6 +20,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PlayerService } from './players/player.service';
 import { AuthService } from './auth.service';
 import { AuthGuard } from './auth-guard.service';
+import { StaffService } from './staff/staff.service';
 
 
 import { PlayersComponent } from './players/players.component';
@@ -29,8 +30,8 @@ import { ImportPlayersComponent } from './players/import-players/import-players.
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LoginComponent } from './login/login.component';
-import { SignUpComponent } from './login/sign-up/sign-up.component';
 import { ListPlayersComponent } from './players/list-players/list-players.component';
+import { StaffComponent } from './staff/staff.component';
 
 import { MaterialModule, MdInputModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -52,10 +53,10 @@ export const firebaseConfig = {
     HomeComponent,
     PageNotFoundComponent,
     LoginComponent,
-    SignUpComponent,
     ListPlayersComponent,
     ImportPlayersComponent,
-    ShowPlayerComponent
+    ShowPlayerComponent,
+    StaffComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +70,7 @@ export const firebaseConfig = {
     MdInputModule,
     BrowserAnimationsModule
   ],
-  providers: [AuthService, PlayerService, AuthGuard],
+  providers: [AuthService, AuthGuard, PlayerService, StaffService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,7 +8,7 @@
       <li class="nav__list__item"><a routerLink="/players/add">Player</a></li>
       <li class="nav__list__item"><a routerLink="/players/list-players">NT Team</a></li>
       <li class="nav__list__item"><a routerLink="/players/import-players">Import</a></li>
-      <li class="nav__list__item"><a routerLink="/players/PID">PID</a></li>
+      <li class="nav__list__item"><a routerLink="staff">NT Staff</a></li>
       <li class="nav__list__item nav_aling_rigth mobile">
         <div *ngIf="(user | async);then userData else loginS"></div>
         <ng-template #loginS>
@@ -22,7 +22,7 @@
       </li>
     </ul>
   </nav>
-  
+
   <br>
   <router-outlet></router-outlet>
 </div>

@@ -8,41 +8,16 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
 @Injectable()
-export class AuthService implements OnInit {
+export class AuthService {
   user: Observable<firebase.User>;
   items: FirebaseListObservable<any[]>;
-  msgVal: string = '';
-  private token: string;
 
   constructor(private afAuth: AngularFireAuth, private db: AngularFireDatabase, private router: Router) {
     this.user = afAuth.authState;
   }
 
-  ngOnInit() {
-    this.afAuth.auth.currentUser.getToken()
-      .then(
-      response => {
-        this.afAuth.auth.currentUser.getToken()
-          .then(
-          (token: string) => this.token = token
-          )
-      }
-      )
-      .catch(
-      error => console.log(error)
-      );
-  }
-
   loginGoogle() {
     this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      .then(
-      response => {
-        this.afAuth.auth.currentUser.getToken()
-          .then(
-          (token: string) => this.token = token
-          )
-      }
-      )
       .catch(
       error => console.log(error)
       );
@@ -57,14 +32,6 @@ export class AuthService implements OnInit {
 
   signinUser(email: string, password: string) {
     this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then(
-      response => {
-        firebase.auth().currentUser.getToken()
-          .then(
-          (token: string) => this.token = token
-          )
-      }
-      )
       .catch(
       error => console.log(error)
       );
@@ -72,7 +39,6 @@ export class AuthService implements OnInit {
 
   logout() {
     this.afAuth.auth.signOut();
-    this.token = null;
   }
 
   getUser() {
@@ -80,9 +46,7 @@ export class AuthService implements OnInit {
   }
 
   isAuthenticated() {
-    if (this.token != null)
+    if (this.afAuth.auth.currentUser != null)
       return true;
-    else
-      return false;
   }
 }

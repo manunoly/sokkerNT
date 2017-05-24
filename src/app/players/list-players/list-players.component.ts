@@ -16,18 +16,17 @@ export class ListPlayersComponent implements OnInit {
   // players: FirebaseListObservable<any[]>;
   playersList: FirebaseListObservable<Player[]>;
   authenticate: boolean = false;
-  
-  constructor(private playerService: PlayerService, private authS: AuthService) { }
+  userName = '';
+  user: any;
+
+  constructor(private playerService: PlayerService, private authS: AuthService, private auth: AuthService) { }
 
   ngOnInit() {
     this.playersList = this.playerService.getPlayers();
-  }
-  isAuthenticated(){
-    console.log(this.authS.isAuthenticated());
-    return this.authS.isAuthenticated();
-  }
+    this.user = this.auth.getUser();
 
-  addStaff(){
-    this.playerService.addStaft();
+  }
+  isAuthenticated() {
+    return this.authS.isAuthenticated();
   }
 }

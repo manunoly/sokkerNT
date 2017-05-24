@@ -16,26 +16,29 @@ export class AppComponent implements OnInit {
   name = '';
   showName: Subscription;
 
-  constructor(private auth: AuthService) {
-    this.user = this.auth.getUser();
-
+  constructor(private authS: AuthService) {
+    this.user = this.authS.getUser();
   }
+
   ngOnInit() {
     this.user.subscribe(
       (user: Object) => {
         if (user != null)
-          this.name = user['displayName'];
+          this.name = user['email'].split("@")[0];
+        // this.name = user['displayName'];
       },
       (error: JSON) => { console.log(error); },
       () => { console.log('completed'); }
     );
+
   }
+
   loginGoogle() {
-    this.auth.loginGoogle();
+    this.authS.loginGoogle();
 
   }
   logout() {
-    this.auth.logout()
+    this.authS.logout()
   }
 
 }

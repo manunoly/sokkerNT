@@ -7,10 +7,13 @@ import { Player } from './player';
 
 @Injectable()
 export class PlayerService {
+  private country: string;
 
   players: FirebaseListObservable<Player[]>;
  
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase, private authS: AuthService) {
+    this.country = 'cuba';
+   }
 
   getPlayers() {
     this.players = this.db.list('/cuba/players');
@@ -18,17 +21,11 @@ export class PlayerService {
   }
 
   savePlayer(player: Player) {
-    console.log
-    return this.db.object('/cuba/players').update({ [player['pid']]: player });
-  }
-
-  addStaft() {
-    console.log(this.db.object('/cuba/staff'));
-    this.db.object('/cuba/staff').update({NT: 'manunoly@gmail.com'});
-    this.db.object('/cuba/staff/members').set(['workprofessional1980@gmail.com','staff@gmail.com','staff1@gmail.com',]);
+    if (this.authS.isAuthenticated())
+      return this.db.object('/'+this.country+'/players').update({ [player['pid']]: player });
   }
 
   archivePlayer(player: Player) {
-    console.log(player);
+    console.log('archivePlayerFunction');
   }
 }

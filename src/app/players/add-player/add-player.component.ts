@@ -11,10 +11,9 @@ import { Player } from '../player';
 })
 export class AddPlayerComponent implements OnInit {
   @ViewChild('f') playerForm: NgForm;
-  playerName = "Manuel";
-  // player: Player = Object.create(Player);
+  player: Player = Object.create(null);
   items: any;
-  player =
+  /*player =
   {
     pid: 11,
     name: 'Player Name',
@@ -36,21 +35,20 @@ export class AddPlayerComponent implements OnInit {
     weight: -1,
     bmi: -1,
     status: 'R'
-  };
+  };*/
   constructor(private playerService: PlayerService) { }
  
   ngOnInit() {
     this.items = this.playerService.getPlayers();
 
   }
+
   savePlayer() {
     this.playerService.savePlayer(this.player).then(() => {
-      console.log("OK");
       this.playerForm.reset();
     }).catch((data: Object) => {
       console.log(JSON.stringify(data));
       console.log("Something went wrong please try again");
     });
   }
-
 }

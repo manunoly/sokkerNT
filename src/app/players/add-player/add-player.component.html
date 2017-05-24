@@ -1,81 +1,80 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1">
-      <div class="page-header">
-        <h3>Update Player Skills<small> please complete de PID first</small></h3>
-      </div>
-      <form (ngSubmit)="savePlayer()" #f="ngForm">
-        <button class="btn btn-sm pull-right" type="submit" [disabled]="!f.valid" (click)="savePlayer()">Save</button>
-
-        <md-input-container>
-          <input mdInput type="number" name="PID" [(ngModel)]="player.pid" required placeholder="Player PID">
-        </md-input-container>
-        <!--<h4><a>{{player.name}}</a> <small>Age: {{player.age}}</small></h4>-->
-
-        <div>
-          <div>
-            value: {{ player.value }}, wage: {{ player.wage }} <br>
-            <strong> {{ player.form }} </strong> <span class="text-muted"></span> form <br> height: {{ player.height }} cm,
-            weight: {{ player.weight }} kg,<br>
-            <span>BMI: {{ player.bmi }} </span> <br> {{ player.experience }} experience -- {{ player.workTeam }} team-work
-            <br><br>
-          </div>
-
-          <div>
-            <table class="table table-striped">
-              <tbody>
-                <tr>
-                  <td>
-                    <md-input-container>
-                      <input mdInput type="number" required placeholder="stamina" name="stamina" [(ngModel)]="player.stamina">
-                    </md-input-container>
-                  </td>
-                  <td>
-                    <md-input-container>
-                      <input mdInput type="number" required placeholder="keeper" name="keeper" [(ngModel)]="player.keeper">
-                    </md-input-container>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <md-input-container>
-                      <input mdInput type="number" required placeholder="pace" name="pace" [(ngModel)]="player.pace">
-                    </md-input-container>
-                  </td>
-                  <td>
-                    <md-input-container>
-                      <input mdInput type="number" required placeholder="defender" name="defender" [(ngModel)]="player.defender">
-                    </md-input-container>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <md-input-container>
-                      <input mdInput type="number" required placeholder="technique" name="technique" [(ngModel)]="player.technique">
-                    </md-input-container>
-                  </td>
-                  <td>
-                    <md-input-container>
-                      <input mdInput type="number" required placeholder="playmaker" name="playmaker" [(ngModel)]="player.playmaker">
-                    </md-input-container>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <md-input-container>
-                      <input mdInput type="number" required placeholder="passing" name="passing" [(ngModel)]="player.passing">
-                    </md-input-container>
-                  </td>
-                  <td>
-                    <md-input-container>
-                      <input mdInput type="number" required placeholder="striker" name="striker" [(ngModel)]="player.striker">
-                    </md-input-container>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </form>
-    </div>
+<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1">
+  <div class="lead">
+    Update Player Skills
+    <small> please complete de PID first</small>
   </div>
+  <form (ngSubmit)="savePlayer()" #f="ngForm">
+    <button class="btn btn-sm pull-right" type="submit" [disabled]="!f.valid" (click)="savePlayer()">Save</button>
+
+    <md-input-container>
+      <input mdInput type="number" name="PID" [(ngModel)]="player.pid" required placeholder="Player PID">
+    </md-input-container>
+    <!--<h4><a>{{player.name}}</a> <small>Age: {{player.age}}</small></h4>-->
+
+    <div>
+      <div>
+        <span class="lead text-capitalize"> Name: <a>{{ player.name }}</a> </span> <br>
+        value: {{ player.value }}, wage: {{ player.wage }} <br>
+        <strong> {{ player.form }} </strong> <span class="text-muted"></span> form <br> height: {{ player.height }} cm, weight:
+        {{ player.weight }} kg,<br>
+        <span>BMI: {{ player.bmi }} </span> <br> {{ player.experience }} experience -- {{ player.workTeam }} team-work
+        <br><br>
+      </div>
+
+      <div>
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <td>
+                <md-input-container>
+                  <input mdInput type="number" required placeholder="stamina" name="stamina" [(ngModel)]="player.stamina">
+                </md-input-container>
+              </td>
+              <td>
+                <md-input-container>
+                  <input mdInput type="number" required placeholder="keeper" name="keeper" [(ngModel)]="player.keeper">
+                </md-input-container>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <md-input-container>
+                  <input mdInput type="number" required placeholder="pace" name="pace" [(ngModel)]="player.pace">
+                </md-input-container>
+              </td>
+              <td>
+                <md-input-container>
+                  <input mdInput type="number" required placeholder="defender" name="defender" [(ngModel)]="player.defender">
+                </md-input-container>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <md-input-container>
+                  <input mdInput type="number" required placeholder="technique" name="technique" [(ngModel)]="player.technique">
+                </md-input-container>
+              </td>
+              <td>
+                <md-input-container>
+                  <input mdInput type="number" required placeholder="playmaker" name="playmaker" [(ngModel)]="player.playmaker">
+                </md-input-container>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <md-input-container>
+                  <input mdInput type="number" required placeholder="passing" name="passing" [(ngModel)]="player.passing">
+                </md-input-container>
+              </td>
+              <td>
+                <md-input-container>
+                  <input mdInput type="number" required placeholder="striker" name="striker" [(ngModel)]="player.striker">
+                </md-input-container>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </form>
+</div>

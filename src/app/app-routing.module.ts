@@ -10,9 +10,8 @@ import { AddPlayerComponent } from './players/add-player/add-player.component';
 import { ShowPlayerComponent } from './players/show-player/show-player.component';
 import { ImportPlayersComponent } from './players/import-players/import-players.component';
 import { LoginComponent } from './login/login.component';
-import { SignUpComponent } from './login/sign-up/sign-up.component';
 import { StaffComponent } from './staff/staff.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
  
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -37,7 +36,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  //add # to the route. imports: [RouterModule.forRoot(routes, {useHash: true})],
+  // add # to the route. imports: [RouterModule.forRoot(routes, {useHash: true})],
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })

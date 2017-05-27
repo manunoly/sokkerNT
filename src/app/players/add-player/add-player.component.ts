@@ -37,9 +37,9 @@ export class AddPlayerComponent implements OnInit {
     status: 'R'
   };*/
   constructor(private playerService: PlayerService) { }
- 
+
   ngOnInit() {
-    this.items = this.playerService.getPlayers();
+    this.playerService.getSokkerPlayer();
 
   }
 

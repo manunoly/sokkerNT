@@ -23,9 +23,10 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.user.subscribe(
       (user: Object) => {
-        if (user != null)
-          this.name = user['email'].split("@")[0];
+        if (user != null) {
+          this.name = user['email'].split('@')[0];
         // this.name = user['displayName'];
+        }
       },
       (error: JSON) => { console.log(error); },
       () => { console.log('completed'); }
@@ -38,7 +39,7 @@ export class AppComponent implements OnInit {
 
   }
   logout() {
-    this.authS.logout()
+    this.authS.logout();
   }
 
 }

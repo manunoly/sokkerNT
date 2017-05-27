@@ -1,4 +1,35 @@
 <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1">
+  <div class="lead">
+    Country Staff
+  </div>
+  <form class="form-horizontal" (ngSubmit)="saveStaff()" #staffMembers="ngForm">
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="nt">Coach NT</label>
+      <div class="col-sm-10 input-group">
+        <span class="input-group-addon" id="nt">@</span>
+        <input type="email" id="nt" placeholder="Coach NT Email" aria-describedby="nt1" required [(ngModel)]="NT" name="NT" class="form-control">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="staff">Staff</label>
+      <div class="col-sm-10 input-group">
+        <span class="input-group-addon" id="staff1">@</span>
+        <textarea id="staff" rows="4"  placeholder="Use multiple mail separate by ','" aria-describedby="staff1" [(ngModel)]="staff" name="staff"
+          class="form-control"></textarea>
+      </div>
+    </div>
+    <!--   <div class="form-group">
+      <label class="col-sm-2 control-label" for="staff2">Staff</label>
+      <div class="col-sm-10 input-group">
+        <span class="input-group-addon" id="staff2">@</span>
+        <input type="text" id="staff" aria-describedby="staff2" [ngModel] = (staff 1| json)?.members class="form-control">
+      </div>
+    </div>-->
+    <button class="btn btn-primary col-sm-offset-2" type="submit" [disabled]="!staffMembers.valid">Save Staff</button>
+  </form>
+</div>
+
+<div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1">
   <ol>
     <li *ngFor="let item of stream | async as list">
       (item | json)
